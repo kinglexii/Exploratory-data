@@ -1,0 +1,114 @@
+#create a sequence
+print(seq(23,400))
+
+#prompt function
+?prompt
+
+prompt="Input your name: "
+print(prompt)
+
+#assign variables
+name <- c('John Doe','Peter Gynn','Jolie Hope')
+age <- c(21, 23, 26)
+
+#create data frame
+data.frame<- c(name,age)
+userage <-data.frame
+
+
+diamonds <- ggplot2::diamonds
+library(magrittr)
+
+library(tidyverse)
+
+x <- 0.15 * 19.71
+round(x,2)
+
+?round
+
+install.packages("dslabs")
+library(dslabs)
+install.packages("rtools")
+
+#2x^2 -x-4=0
+a <- 2
+b <- 1
+c <- -4
+
+a
+
+ls()
+
+solution_1 <- (-b - sqrt(b^2 - 4*a*c))/(2*a)
+solution_2 <- (-b + sqrt(b^2 - 4*a*c))/(2*a)
+
+print(solution_1)
+print(solution_2)
+ls
+lm
+
+#functions are nested
+#functions are evaluated from the inside out when you nest them
+# R functions are documented
+
+#for variable names, stick to underscores and lower cases.
+
+a <- 3
+b <- 2
+c <- -1
+
+solution_1
+solution_2 
+print(solution_1)
+print(solution_2)
+
+
+library(dslabs)
+data("murders")
+
+#checking the class of murders dataframe
+class(murders)
+#structure of murders dataframe
+str(murders)
+
+library(help = "stats")
+
+#show the first six lines of murders dataframe
+head(murders)
+#show names of variables in murders dataframe
+names(murders)
+#show levels of the factors
+levels(murders$region)
+
+# == is a relational vector, it tests for equality
+z <- 3 == 2
+z
+print(class(z))
+
+#You can see the other relational operators by typing:
+?Comparison
+
+#turning something into an integer
+as.integer()
+
+# We extract the population like this:
+p <- murders$population
+
+# This is how we do the same with the square brackets:
+o <- murders[["population"]] 
+
+# We can confirm these two are the same
+identical(o, p)
+
+# We can see the class of the region variable using class
+class(murders$region)
+
+# Determine the number of regions included in this variable using a nested funtion
+length(levels(murders$region))
+
+#The function table takes a vector as input and returns the frequency of each unique element in the vector.
+# Write one line of code to show the number of states per region
+table(murders$region)
+
+log(1024,4)
+
