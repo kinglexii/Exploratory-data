@@ -1,26 +1,21 @@
-#create a sequence
+#creating a sequence
 print(seq(23,400))
 
-#prompt function
+#creating a prompt
 ?prompt
-
 prompt="Input your name: "
 print(prompt)
 
-#assign variables
+?run_console
+
+#creating a dataframe
 name <- c('John Doe','Peter Gynn','Jolie Hope')
 age <- c(21, 23, 26)
 
-#create data frame
 data.frame<- c(name,age)
 userage <-data.frame
 
-
-diamonds <- ggplot2::diamonds
-library(magrittr)
-
-library(tidyverse)
-
+#rounding a number
 x <- 0.15 * 19.71
 round(x,2)
 
@@ -30,22 +25,18 @@ install.packages("dslabs")
 library(dslabs)
 install.packages("rtools")
 
+#solving the quadratc formula
 #2x^2 -x-4=0
 a <- 2
 b <- 1
 c <- -4
-
-a
-
-ls()
 
 solution_1 <- (-b - sqrt(b^2 - 4*a*c))/(2*a)
 solution_2 <- (-b + sqrt(b^2 - 4*a*c))/(2*a)
 
 print(solution_1)
 print(solution_2)
-ls
-lm
+
 
 #functions are nested
 #functions are evaluated from the inside out when you nest them
@@ -110,5 +101,18 @@ length(levels(murders$region))
 # Write one line of code to show the number of states per region
 table(murders$region)
 
+#operation to find log base 4 of 1024
 log(1024,4)
 
+# The function reorder lets us change the order of the levels of a factor variable based on a summary computed on a numeric vector. 
+#create region dataframe
+region <- murders$region
+
+#create the value dataframe
+value <- murders$total
+
+#reorder the region data by the sum of total murders in "value", from least murders to most murders
+region <- reorder(region, value, FUN = sum)
+levels(region)
+
+?reorder
