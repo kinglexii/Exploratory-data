@@ -29,4 +29,141 @@ codes[1:3]
 #access a specific name in the vector, use quotes
 codes["canada"]
 
+#coercion is an attempt by R to be flexible with data types,
+#vectors must always be the same type but R can coerce a vector before throwing out an error message
+#example
+x <- c(1,"canada",3)
+# 1 and 3 are retruned as character strings, when the class of the vector X is checekd it returns as character
+class(x)
+#R coerced the data into a character string 
+
+#r can force a specific coercion
+x <- 20:36
+y <- as.character(x)
+#can use as.muneric to turn them back frm character to numenric
+as.numeric(y)
+
+#Create a vector containing all the positive odd numbers smaller than 100.
+# The numbers should be in ascending order
+seq(1,100,2)
+
+#length.out lets us generate sequences that are increasing by the same amount but are of the prespecified length.
+seq(1,100,length.out = 10)
+
+#You can create an integer by adding the letter L after a whole number
+class(3L)
+#For most practical purposes, integers and numerics are indistinguishable,
+3-3L
+#integers tae up less space
+
+library(dslabs)
+data(murders)
+
+#the function sort sorts vectors in increasing order
+sort(murders$total)
+
+#The function order takes a vector as input and returns the vector of indexes that sorts the input vector
+x <- c(31, 4, 15, 92, 65)
+sort(x)
+
+index <- order(x)
+x[index]
+#this is the index that puts x in order
+order(x)
+# this returns 2,3,1,5,5
+#the second item (4) is the smallest so it comes 1st
+
+#using the dslabs data set to answer the question of wich state has the most murders
+#We first obtain the index that orders the vectors according to murder totals and 
+index <- order(murders$total)
+#then index the state names vector
+murders$abb[index]
+
+#[1] "VT" "ND" "NH" "WY" "HI" "SD" "ME" "ID" "MT" "RI" "AK" "IA" "UT" "WV" "NE" "OR" "DE"
+#[18] "MN" "KS" "CO" "NM" "NV" "AR" "WA" "CT" "WI" "DC" "OK" "KY" "MA" "MS" "AL" "IN" "SC"
+#[35] "TN" "AZ" "NJ" "VA" "NC" "MD" "OH" "MO" "LA" "IL" "GA" "MI" "PA" "NY" "FL" "TX" "CA"
+
+#so california has the most murders and vermont has the least
+  
+#the function max can be used to find the largest value
+max(murders$total)
+#this gives us the max of the total murders
+
+#which.max gives the index where the max number is
+i_max <- which.max(murders$total)
+i_max
+#this returns 5
+#now we subset the murders data set to access the object in the vector that matches with 5
+murders$state[i_max]
+#its cali
+
+i_min <- which.min(murders$total)
+murders$abb[i_min]
+
+#its VT
+
+#the function rank returns a vector with the rank of the first entry, second entry, etc., of the input vector
+x
+# 31 4 15 92 65
+rank(x)
+#3 1 2 5 4, returns this 
+
+#31 is the third smallest value so it returns a 3, 4 is the smallest so it gets 1
+
+# Access population values from the dataset and store it in pop
+pop <- murders$population
+# Sort the object and save it in the same object 
+pop<- sort(pop)
+# Report the smallest population size 
+pop[1]
+
+# Access population from the dataset and store it in pop
+pop <- murders$population
+# Use the command order to find the vector of indexes that order pop and store in object ord
+ord <- order(murders$population)
+# Find the index number of the entry with the smallest population size,subset
+ord[1]
+
+# Define a variable states to be the state names from the murders data frame
+
+states <- (murders$state)
+# Define a variable ranks to determine the population size ranks 
+ranks <- rank(murders$population)
+
+# Define a variable ind to store the indexes needed to order the population values
+ind <- order(murders$population)
+
+# Create a data frame my_df with the state name and its rank and ordered from least populous to most 
+my_df <- data.frame(name = states[ind], rank = ranks[ind])
+
+# Using new dataset 
+library(dslabs)
+data(na_example)
+
+# Checking the structure 
+str(na_example)
+
+# Find out the mean of the entire dataset 
+mean(na_example)
+
+# Use is.na to create a logical index ind that tells which entries are NA
+ind <- is.na(na_example)
+# Determine how many NA ind has using the sum function
+sum(ind)
+
+#in R arithmetic operations on vectors occur element wise
+murder_rate <- murders$total/murders$population * 100000
+
+#order states by murder rate in decreasing order
+murders$state[order(murder_rate, decreasing = TRUE)]
+
+# Calculate the average murder rate in the US 
+mean(murder_rate)
+
+name <- c("Mandi", "Amy", "Nicole", "Olivia")
+distance <- c(0.8, 3.1, 2.8, 4.0)
+time <- c(10, 30, 40, 50)
+
+time/60
+distance/(time/60)
 
